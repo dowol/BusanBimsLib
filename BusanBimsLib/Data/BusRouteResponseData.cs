@@ -40,7 +40,6 @@ namespace BusanBimsLib.Data
         public string? BusStopName { get; }
         public string? CarPlate { get; }
         public int? Direction { get; }
-        // public DateTime? GPSTime { get; } // Not Implemented
         public Geolocation? Location { get; }
         public string? NodeID { get; }
         public BusRouteNodeType? NodeType { get; }
@@ -65,22 +64,6 @@ namespace BusanBimsLib.Data
 
             if (int.TryParse(element["direction"]?.InnerNormalizedText(), out int direction))
                 Direction = direction;
-
-            /*{
-                string? gpsym = element["gpsym"]?.InnerNormalizedText();
-                if(!string.IsNullOrWhiteSpace(gpsym))
-                {
-                    DateTime today = DateTime.Today;
-                    GPSTime = new(
-                        year:  today.Year,
-                        month: today.Month,
-                        day:   today.Day,
-                        hour: int.Parse(gpsym[1..2]) % 24,
-                        minute: int.Parse(gpsym[3..4]),
-                        second: int.Parse(gpsym[5..])
-                    );
-                }
-            }*/
 
             if (double.TryParse(element["lat"]?.InnerNormalizedText(), out double lat) && double.TryParse(element["lin"]?.InnerNormalizedText(), out double lin))
                 Location = new(lat, lin);
