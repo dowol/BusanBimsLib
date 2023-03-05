@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy api-accesskey.txt bin\Debug\net7.0\api-accesskey.txt" />
+    <Exec Command="IF EXIST api-accesskey.txt COPY api-accesskey.txt bin\Debug\net7.0\api-accesskey.txt" />
   </Target>
 
 </Project>
