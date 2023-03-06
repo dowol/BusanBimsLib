@@ -6,12 +6,18 @@ namespace BusanBimsLib.Data
 {
     public class BusInfoRequestData : RequestDataBase
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [RequestData("lineid")]
-        public string? LineID { get; set; }
+        public string? BusID { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [RequestData("lineno")]
-        public string? LineName { get; set; }
+        public string? BusName { get; set; }
 
-
+        internal BusInfoRequestData() { }
     }
 }

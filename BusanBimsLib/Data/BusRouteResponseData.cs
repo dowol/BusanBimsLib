@@ -34,26 +34,59 @@ namespace BusanBimsLib.Data
 
     public class BusRouteNode
     {
+        /// <summary>
+        /// 버스정류장 ARS 번호
+        /// </summary>
         public int? ARS { get; }
-        public TimeSpan? Interval { get; }
+        /// <summary>
+        /// 정류장간 이동시간
+        /// </summary>
+        public TimeSpan? TravelTime { get; }
+        /// <summary>
+        /// 정류장 순서
+        /// </summary>
         public int? Order { get; }
+        /// <summary>
+        /// 버스정류장 이름
+        /// </summary>
         public string? BusStopName { get; }
+        /// <summary>
+        /// 차량번호
+        /// </summary>
         public string? CarPlate { get; }
+        /// <summary>
+        /// 버스 행선지
+        /// </summary>
         public int? Direction { get; }
+        /// <summary>
+        /// 정류장 위치
+        /// </summary>
         public Geolocation? Location { get; }
+        /// <summary>
+        /// 마커 API ID
+        /// </summary>
         public string? NodeID { get; }
+        /// <summary>
+        /// 마커 유형
+        /// </summary>
         public BusRouteNodeType? NodeType { get; }
+        /// <summary>
+        /// 회차지점 여부
+        /// </summary>
         public bool? IsReturningPoint { get; }
+        /// <summary>
+        /// 저상버스 여부
+        /// </summary>
         public bool? IsLowPlateBus { get; }
 
 
-        public BusRouteNode(XmlElement element)
+        internal BusRouteNode(XmlElement element)
         {
             if (int.TryParse(element["arsno"]?.InnerNormalizedText(), out int arsno))
                 ARS = arsno;
 
             if (int.TryParse(element["avgym"]?.InnerNormalizedText(), out int avgym))
-                Interval = TimeSpan.FromSeconds(avgym);
+                TravelTime = TimeSpan.FromSeconds(avgym);
 
             if (int.TryParse(element["bstopidx"]?.InnerNormalizedText(), out int bstopidx))
                 Order = bstopidx;
@@ -82,5 +115,11 @@ namespace BusanBimsLib.Data
         }
     }
 
-    public enum BusRouteNodeType : byte { Intersection = 0, BusStop = 3 }
+    public enum BusRouteNodeType : byte 
+    { 
+        /// <summary>교차로</summary>
+        Intersection = 0, 
+        /// <summary>버스정류장</summary>
+        BusStop = 3 
+    }
 }

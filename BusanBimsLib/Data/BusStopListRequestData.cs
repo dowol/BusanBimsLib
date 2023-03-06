@@ -16,11 +16,9 @@ namespace BusanBimsLib.Data
         public string? BusStopName { get; set; }
 
         [RequestData("arsno")]
-        public int? ARSBusStopNo { get; set; } 
+        public string? ARSBusStopNo { get; set; }
 
-        public BusStopListRequestData()
-        {
+        internal BusStopListRequestData() { }
 
-        }
     }
 }

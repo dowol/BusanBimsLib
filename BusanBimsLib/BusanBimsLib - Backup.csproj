@@ -13,8 +13,6 @@ API for Busan city BIMS</Description>
     <NeutralLanguage>ko-KR</NeutralLanguage>
     <PackageLicenseExpression>LGPL-2.1-or-later</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>C:\Users\shcho\OneDrive\.snk\dowol.dev.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>

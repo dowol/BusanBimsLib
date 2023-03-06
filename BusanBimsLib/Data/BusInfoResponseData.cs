@@ -9,6 +9,9 @@ using System.Xml;
 
 namespace BusanBimsLib.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public record class BusInfoResponseData : IEnumerable<BusInfo>
     {
         private readonly List<BusInfo> list = new();
@@ -33,18 +36,49 @@ namespace BusanBimsLib.Data
 
     public record class BusInfo
     {
+        /// <summary>
+        /// 버스 API ID
+        /// </summary>
         public string BusID { get; }
+        /// <summary>
+        /// 노선번호
+        /// </summary>
         public string BusName { get; }
+        /// <summary>
+        /// 버스 종류
+        /// </summary>
         public string BusKind { get; }
+        /// <summary>
+        /// 운수회사
+        /// </summary>
         public string Company { get; }
-
+        /// <summary>
+        /// 기점
+        /// </summary>
         public string BeginingAt { get; }
+        /// <summary>
+        /// 종점
+        /// </summary>
         public string EndingAt { get; }
-        
+        /// <summary>
+        /// 기점 첫차출발시각
+        /// </summary>
         public TimeOnly FirstBus { get; }
+        /// <summary>
+        /// 기점 막차출발시각
+        /// </summary>
         public TimeOnly LastBus { get; }
+        /// <summary>
+        /// 배차간격
+        /// </summary>
         public TimeSpan Interval { get; }
+        /// <summary>
+        /// 출퇴근시간 배차간격
+        /// </summary>
         public TimeSpan RushHourInterval { get; }
+        /// <summary>
+        /// 주말/공휴일 배차간격
+        /// </summary>
         public TimeSpan HolidayInterval { get; }
 
         internal BusInfo(XmlElement element)
