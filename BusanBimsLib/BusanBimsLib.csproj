@@ -9,7 +9,7 @@
     <Description>부산광역시 버스정보시스템 API
 API for Busan city BIMS</Description>
     <PackageProjectUrl>https://github.com/dowol/BusanBimsLib</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/dowol/busanbims</RepositoryUrl>
+    <RepositoryUrl>https://github.com/dowol/BusanBimsLib</RepositoryUrl>
     <NeutralLanguage>ko-KR</NeutralLanguage>
     <PackageLicenseExpression>LGPL-2.1-or-later</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
