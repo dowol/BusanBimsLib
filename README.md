@@ -36,7 +36,7 @@ https://nuget.org/packages/BusanBimsLib
 > (Encoding 인증키를 사용할 경우 인증키를 제대로 인식하지 못할 수도 있습니다.)  
 > 
 > ![](./accesskey-guide.png)  
-> 파란색 강조 표시된 부분을 사용
+> <span style="color: blue; background-color: white">파란색 강조</span> 표시된 부분을 사용
 
 * C# (>= 9.0 &amp; Top-level statement 사용 시)
 ```csharp
