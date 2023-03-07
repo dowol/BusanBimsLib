@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BusanBimsLib.Utilities
+namespace BusanBimsLib.Utilities;
+
+internal static class StringExtensions
 {
-    public static class StringExtensions
+    internal static string ToCamelCase(this string s)
     {
-        public static string ToCamelCase(this string s)
-        {
-            return s[0].ToString().ToLowerInvariant() + s[1..];
-        }
+        return s[0].ToString().ToLowerInvariant() + s[1..];
     }
 }

@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace BusanBimsLib.Utilities
+namespace BusanBimsLib.Utilities;
+
+internal static class XmlExtensions
 {
-    public static class XmlExtensions
+    internal static string? InnerNormalizedText(this XmlElement element)
     {
-        public static string? InnerNormalizedText(this XmlElement element)
-        {
-            return element?.InnerText.Normalize().Trim();
-        }
+        return element?.InnerText.Normalize().Trim();
     }
 }
