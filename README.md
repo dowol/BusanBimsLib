@@ -8,6 +8,24 @@
 **BusanBimsLib**는 
 
 
+### .NET CLI로 설치
+```bash
+dotnet add package BusanBimsLib 
+```
+
+### Package Manager CLI로 설치
+```pwsh
+Install-Package BusanBimsLib 
+```
+
+### PackageReference
+```xml
+<PackageReference Include="BusanBimsLib" Version="1.0.0" />
+```
+
+### NuGet 패키지 직접 다운로드
+https://nuget.org/packages/BusanBimsLib
+
 ## 사용방법
 **BusanBimsLib**의 모든 기능은 `BusanBimsLib.BusanBimsClient` 클래스에서 동작합니다.
 
