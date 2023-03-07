@@ -11,25 +11,6 @@ namespace BusanBimsLib;
 public partial class BusanBimsClient
 {
     /// <summary>
-    /// 주어진 키워드에 해당하는 버스정류장 정보를 가져옵니다.
-    /// </summary>
-    /// <param name="req"></param>
-    /// <returns></returns>
-    public async Task<BusStopListResponseData> GetBusStopList(BusStopListRequestData req)
-    {
-        BusanBimsResult result = await CallAsync("busStopList", req);
-
-        if (result.Succeeded)
-        {
-            return new BusStopListResponseData(result.ResultData);
-        }
-        else
-        {
-            throw result.Exception ?? new BusanBimsException(BusanBimsStatus.Unknown);
-        }
-    }
-
-    /// <summary>
     /// 주어진 키워드로 버스정류장 정보를 검색합니다.
     /// </summary>
     /// <param name="busStopName">버스정류장 이름 또는 키워드</param>
@@ -83,7 +64,7 @@ public partial class BusanBimsClient
     }
 
     /// <summary>
-    /// 버스노선 정보를 가져옵니다
+    /// 주어진 키워드로 버스노선 정보를 검색합니다.
     /// </summary>
     /// <param name="busName">버스 노선번호</param>
     /// <param name="busID">버스노선 API ID</param>
