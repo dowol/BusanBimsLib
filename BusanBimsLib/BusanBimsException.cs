@@ -6,9 +6,11 @@ namespace BusanBimsLib;
 
 public class BusanBimsException : Exception
 {
+#pragma warning disable CS8600, CS8603, CS8605
     public BusanBimsStatus Status => (BusanBimsStatus)Data["Status"];
 
     public override string Message => (string)Data["Message"];
+#pragma warning restore CS8600, CS8603, CS8605
 
     internal BusanBimsException(BusanBimsStatus status)
     {

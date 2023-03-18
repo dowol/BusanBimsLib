@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace BusanBimsLib;
 
 #pragma warning disable CS8604
-public partial class BusanBimsClient
+public sealed partial class BusanBimsClient
 {
     /// <summary>
     /// 주어진 키워드로 버스정류장 정보를 검색합니다.

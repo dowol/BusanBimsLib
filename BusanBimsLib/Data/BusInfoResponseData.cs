@@ -7,7 +7,7 @@ using System.Xml;
 namespace BusanBimsLib.Data;
 
 /// <summary>
-/// 
+/// 버스 노선 정보 데이터를
 /// </summary>
 public record class BusInfoResponseData : IEnumerable<BusInfo>
 {

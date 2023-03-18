@@ -6,15 +6,15 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>BusanBIMS</Title>
     <Authors>Dowol</Authors>
-    <Description>부산광역시 버스정보시스템 API
-API for Busan city BIMS</Description>
+    <Description>부산광역시 버스정보시스템 API</Description>
     <PackageProjectUrl>https://github.com/dowol/BusanBimsLib</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dowol/BusanBimsLib</RepositoryUrl>
     <NeutralLanguage>ko-KR</NeutralLanguage>
     <PackageLicenseExpression>LGPL-2.1-or-later</PackageLicenseExpression>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>C:\Users\shcho\OneDrive\.snk\dowol.dev.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\.snk\dowol.dev.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
