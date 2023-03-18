@@ -161,7 +161,7 @@ foreach(BusInfo item in busInfo)
 
 ### 버스노선 정류장 리스트 가져오기
 
-> **Info**  
+> **Information**  
 > 이 작업은 실행 시간이 오래 걸릴 수 있습니다.
 
 ```csharp
