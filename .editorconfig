@@ -1,3 +1,10 @@
+root = true
+
+[*]
+tab_width = 4
+indent_style = space
+indent_size = 4
+end_of_line = crlf
 
 [*.{cs,vb}]
 #### Naming styles ####
