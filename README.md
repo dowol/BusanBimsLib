@@ -54,15 +54,15 @@ using BusanBimsLib;
 
 namespace BusanBimsLibExample 
 {
-	public class Program 
-	{
-		public static async Task Main(string[] args)
-		{
-			BusanBimsClient bis = new BusanBimsClient("DECODING_ACCESS_KEY"); 
+    public class Program 
+    {
+        public static async Task Main(string[] args)
+        {
+            BusanBimsClient bis = new BusanBimsClient("DECODING_ACCESS_KEY"); 
 
-			......
-		}
-	}
+            ......
+        }
+    }
 }
 
 ```
@@ -80,11 +80,11 @@ Console.WriteLine($"버스정류장 '{kwd}' 검색결과: {busStopList.Count}개
 
 foreach(var item in busStopList)
 {
-	Console.WriteLine($"버스정류장 이름: {item.BusStopName}");
-	Console.WriteLine($"버스정류장 ID : {item.BusStopID}");
-	Console.WriteLine($"버스정류장 종류: {item.BusStopKind}");
-	Console.WriteLine($"버스정류장 위치: {item.Location}");
-	Console.WriteLine();
+    Console.WriteLine($"버스정류장 이름: {item.BusStopName}");
+    Console.WriteLine($"버스정류장 ID : {item.BusStopID}");
+    Console.WriteLine($"버스정류장 종류: {item.BusStopKind}");
+    Console.WriteLine($"버스정류장 위치: {item.Location}");
+    Console.WriteLine();
 }
 
 Console.WriteLine($"페이지 {busStopList.Page} / {busStopList.TotalPages}");
@@ -162,7 +162,6 @@ foreach(BusInfo item in busInfo)
 배차간격: 7분
 
 ```
-
 ### 버스노선 정류장 리스트 가져오기
 > **Warning**  
 > `busID` 파라메터에 **실제 노선번호**(`BusName`, 예: `"80"`, `"강서구7-2"`)를 전달하면 작동하지 않습니다. 
@@ -185,7 +184,7 @@ foreach(BusRouteNode item in busRoute)
     {
         sb.Append('[');
         if(item?.IsLowPlateBus) sb.Append("저상 ");
-	    sb.Append("{item.CarPlate}]");
+        sb.Append("{item.CarPlate}]");
     }
     if(item.IsReturningPoint) sb.Append("(종점)")
     
@@ -212,25 +211,44 @@ foreach(BusRouteNode item in busRoute)
 
 ```
 
-### 특정 정류장 전체 버스 운행정보 가져오기
+### 특정 정류장 버스 도착정보 가져오기
 ```csharp
 ...
+string busStopID = "174130201";
 
+BusServiceInfoResponseData busServiceInfo = await bis.GetBusServiceInfo();
+
+foreach(BusServiceInfo item in busServiceInfo)
+{
+    Console.WriteLine($"{item.BusKind.Replace("버스", "")} {item.BusName}");
+
+    foreach(BusServiceDetail detail in item)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append($"{item.LeftStops}전 / {item.LeftTime.TotalMinutes}분 후 [");
+        if(item.IsLowPlate) sb.Append("저상 ");
+        sb.Append($"{sb.BusPlate}]");
+        Console.WriteLine(sb);
+    }
+    Console.WriteLine();
+}
 ...
 ```
 실행 결과:
 ```
+급행 1002 
+2전 / 7분 후 [1152]
+7전 / 23분 후 [1901]
+
+일반 148
+1전 / 2분 후 [2546]
+
+일반 50
+3전 / 6분 후 [저상 2554]
+14전 / 21분 후 [저상 2533]
+
 ```
 
-### 특정 정류장의 특정 버스 운행정보 가져오기
-```csharp
-...
-
-...
-```
-실행 결과:
-```
-```
 
 ## 라이센스
 **BusanBimsLib**는 [GNU LGPL 2.1 라이센스](https://www.olis.or.kr/license/Detailselect.do?lId=1005)에 따라 자유롭게 이용, 복제, 수정, 재배포가 가능합니다.
