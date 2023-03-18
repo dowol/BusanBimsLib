@@ -35,8 +35,8 @@ https://nuget.org/packages/BusanBimsLib
 > API 클라이언트 인스턴스(`BusanBimsClient`)를 생성할 때, [공공데이터포털](https://data.go.kr/)에서 발급받은 인증키 중 **Decoding** 인증키를 사용하여야 합니다.  
 > (Encoding 인증키를 사용할 경우 인증키를 제대로 인식하지 못할 수도 있습니다.)  
 > 
-> ![](./accesskey-guide.png)  
-> <span style="color: blue; background-color: white">파란색 강조</span> 표시된 부분을 사용
+> ![AccessKey Guidelines](./accesskey-guide.png)  
+> **파란색 강조 표시된 부분을 사용**
 
 * C# (>= 9.0 &amp; Top-level statement 사용 시)
 ```csharp
@@ -90,7 +90,7 @@ foreach(var item in busStopList)
 Console.WriteLine($"페이지 {busStopList.Page} / {busStopList.TotalPages}");
 ......
 ```
-실행 결과:
+#### 실행 결과:
 ```
 버스정류장 '서면' 검색결과: 12개 중 10개
 
@@ -139,9 +139,9 @@ foreach(BusInfo item in busInfo)
     Console.WriteLine($"배차간격: {item.Interval.TotalMinutes}분");
     Console.WriteLine();
 }
-
+...
 ```
-실행 결과:
+#### 실행 결과:
 ```
 버스노선 '80' 검색결과: 2개
 
@@ -172,28 +172,28 @@ foreach(BusInfo item in busInfo)
 > 이 작업은 실행 시간이 오래 걸릴 수 있습니다.
 
 ```csharp
+...
 string busID = "5200051000";
 
 BusRouteResponseData busRoute = await bis.GetBusRoute(busID);
 
 foreach(BusRouteNode item in busRoute)
 {
-	StringBuilder sb = new StringBuilder();
-	sb.Append($"{item.Order}. {item.BusStopName}");
-	if(item.CarPlate != null)
-	{
-		sb.Append('[');
-	    if(item?.IsLowPlateBus) sb.Append("저상 ");
-		sb.Append("{item.CarPlate}]");
-	}
-	if(item.IsReturningPoint) sb.Append("(종점)")
-	
-	Console.WriteLine(sb);
+    StringBuilder sb = new StringBuilder();
+    sb.Append($"{item.Order}. {item.BusStopName}");
+    if(item.CarPlate != null)
+    {
+        sb.Append('[');
+        if(item?.IsLowPlateBus) sb.Append("저상 ");
+	    sb.Append("{item.CarPlate}]");
+    }
+    if(item.IsReturningPoint) sb.Append("(종점)")
+    
+    Console.WriteLine(sb);
 }
-
-
+...
 ```
-실행 결과:
+#### 실행 결과:
 ```
 1. 금정공영차고지[70자5473]
 2. 부산종합터미널.노포역
@@ -214,8 +214,9 @@ foreach(BusRouteNode item in busRoute)
 
 ### 특정 정류장 전체 버스 운행정보 가져오기
 ```csharp
+...
 
-
+...
 ```
 실행 결과:
 ```
@@ -223,8 +224,9 @@ foreach(BusRouteNode item in busRoute)
 
 ### 특정 정류장의 특정 버스 운행정보 가져오기
 ```csharp
+...
 
-
+...
 ```
 실행 결과:
 ```
