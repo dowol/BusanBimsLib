@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace BusanBimsLib.Data;
 
-public class BusServiceInfoResponseData : IEnumerable<BusServiceInfo>
+public class BusServiceInfoResponseData : IReadOnlyCollection<BusServiceInfo>
 {
     private readonly List<BusServiceInfo> list = new();
 
@@ -15,6 +15,8 @@ public class BusServiceInfoResponseData : IEnumerable<BusServiceInfo>
         foreach (XmlElement item in element.GetElementsByTagName("item"))
             list.Add(new BusServiceInfo(item));
     }
+
+    public int Count => ((IReadOnlyCollection<BusServiceInfo>)list).Count;
 
     public IEnumerator<BusServiceInfo> GetEnumerator()
     {

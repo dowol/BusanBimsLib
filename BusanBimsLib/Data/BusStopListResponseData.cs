@@ -17,9 +17,13 @@ public sealed record class BusStopListResponseData : IEnumerable<BusStopInfo>
     /// </summary>
     public int ItemsPerPage => list.Count;
     /// <summary>
-    /// 페이지 번호
+    /// 현제 페이지 번호
     /// </summary>
     public int Page { get; }
+    /// <summary>
+    /// 전체 페이지 수
+    /// </summary>
+    public int TotalPages => Count / ItemsPerPage;
     /// <summary>
     /// 전체 데이터 개수
     /// </summary>

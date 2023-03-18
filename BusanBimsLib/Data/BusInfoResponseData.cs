@@ -9,9 +9,13 @@ namespace BusanBimsLib.Data;
 /// <summary>
 /// 버스 노선 정보 데이터를
 /// </summary>
-public record class BusInfoResponseData : IEnumerable<BusInfo>
+public record class BusInfoResponseData : IReadOnlyCollection<BusInfo>
 {
     private readonly List<BusInfo> list = new();
+    /// <summary>
+    /// 전체 데이터 개수
+    /// </summary>
+    public int Count => list.Count;
 
     public IEnumerator<BusInfo> GetEnumerator()
     {

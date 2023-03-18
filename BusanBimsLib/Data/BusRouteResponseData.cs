@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace BusanBimsLib.Data;
 
-public class BusRouteResponseData : IEnumerable<BusRouteNode>
+public class BusRouteResponseData : IReadOnlyCollection<BusRouteNode>
 {
     private readonly List<BusRouteNode> list = new();
 
@@ -17,6 +17,8 @@ public class BusRouteResponseData : IEnumerable<BusRouteNode>
         foreach (XmlElement item in element.GetElementsByTagName("item"))
             list.Add(new(item));
     }
+
+    public int Count => ((IReadOnlyCollection<BusRouteNode>)list).Count;
 
     public IEnumerator<BusRouteNode> GetEnumerator()
     {
