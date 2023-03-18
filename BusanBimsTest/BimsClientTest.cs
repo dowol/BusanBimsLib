@@ -32,7 +32,7 @@ namespace BusanBimsTest
         [DataRow("금정구3")]
         [DataRow("301")]
         [DataRow("6")]
-        [DataRow("133")]
+        [DataRow("33")]
         [DataRow("심야")]
         [DataRow("131")]
         [DataRow("300")]

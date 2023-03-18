@@ -13,7 +13,7 @@
     <PackageLicenseExpression>LGPL-2.1-or-later</PackageLicenseExpression>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <SignAssembly>True</SignAssembly>
+    <SignAssembly>False</SignAssembly>
     <AssemblyOriginatorKeyFile>..\.snk\dowol.dev.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
