@@ -222,14 +222,21 @@ foreach(BusServiceInfo item in busServiceInfo)
 {
     Console.WriteLine($"{item.BusKind.Replace("버스", "")} {item.BusName}");
 
-    foreach(BusServiceDetail detail in item)
+    if(item.ServiceInfo.Count > 0)
     {
-        StringBuilder sb = new StringBuilder();
-        sb.Append($"{item.LeftStops}전 / {item.LeftTime.TotalMinutes}분 후 [");
-        if(item.IsLowPlate) sb.Append("저상 ");
-        sb.Append($"{sb.BusPlate}]");
-        Console.WriteLine(sb);
+        foreach(BusServiceDetail detail in item)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{item.LeftStops}전 / {item.LeftTime.TotalMinutes}분 후 [");
+            if(item.IsLowPlate) sb.Append("저상 ");
+            sb.Append($"{sb.BusPlate}");
+            if(item.LeftSeats != null) sb.Append($" {item.LeftSeats}석");
+            sb.Append(']');
+            Console.WriteLine(sb);
+        }
     }
+    else Console.WriteLine("운행 준비중");
+    
     Console.WriteLine();
 }
 ...
@@ -237,11 +244,10 @@ foreach(BusServiceInfo item in busServiceInfo)
 실행 결과:
 ```
 급행 1002 
-2전 / 7분 후 [1152]
-7전 / 23분 후 [1901]
+6전 / 18분 후 [1901]
 
 일반 148
-1전 / 2분 후 [2546]
+운행 준비중
 
 일반 50
 3전 / 6분 후 [저상 2554]
