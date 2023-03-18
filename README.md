@@ -56,11 +56,11 @@ namespace BusanBimsLibExample
 {
 	public class Program 
 	{
-		public static void Main(string[] args)
+		public static async Task Main(string[] args)
 		{
-			BusanBimsClient bis = new("DECODING_ACCESS_KEY"); 
+			BusanBimsClient bis = new BusanBimsClient("DECODING_ACCESS_KEY"); 
 
-			...
+			......
 		}
 	}
 }
@@ -72,9 +72,11 @@ namespace BusanBimsLibExample
 ```csharp
 ......
 // 해당 키워드가 이름에 포함된 버스정류장 데이터를 가져옵니다. 
-BusStopListResponseData busStopList = await bis.GetBusStopList("서면");
+string kwd = "서면"
 
-Console.WriteLine($"검색결과: {busStopList.Count}개\n");
+BusStopListResponseData busStopList = await bis.GetBusStopList(kwd);
+
+Console.WriteLine($"버스정류장 '{kwd}' 검색결과: {busStopList.Count}개 중 {busStopList.ItemsPerPage}개\n");
 
 foreach(var item in busStopList)
 {
@@ -85,11 +87,12 @@ foreach(var item in busStopList)
 	Console.WriteLine();
 }
 
+Console.WriteLine($"페이지 {busStopList.Page} / {busStopList.TotalPages}");
 ......
 ```
 실행 결과:
 ```
-검색결과: 12개
+버스정류장 '서면' 검색결과: 12개 중 10개
 
 버스정류장 이름: 서면역.롯데호텔백화점
 버스정류장 ID : 164630302
@@ -108,38 +111,117 @@ foreach(var item in busStopList)
 버스정류장 종류: 일반
 버스정류장 위치: 35.157888797896, 129.061751007201
 
+페이지 1 / 2
+
 ```
 
 ### 버스노선 검색하기
 ```csharp
 ...
+string kwd = "80";
 
 BusInfoResponseData busInfo = await bis.GetBusInfo("80");
 
+Console.WriteLine("버스노선 '{kwd}' 검색결과: {busInfo.Count}개");
+
+foreach(BusInfo item in busInfo)
+{
+    Console.WriteLine($"노선번호: {item.BusName}");
+    Console.WriteLine($"종류: {item.BusKind}");
+    Console.WriteLine($"기점: {item.BeginingAt}");
+    Console.WriteLine($"종점: {item.EndingAt}");
+    Console.WriteLine($"첫차: {item.FirstBus:HH:mm}");
+    Console.WriteLine($"막차: {item.LastBus:HH:mm}");
+    Console.WriteLine($"배차간격: {item.Interval.TotalMinutes}분");
+    Console.WriteLine();
+}
 
 ```
-출력 결과:
+실행 결과:
 ```
+버스노선 '80' 검색결과: 2개
+
+노선번호: 180
+종류: 일반버스
+기점: 청강리공영차고지
+종점: 고원3차아파트
+첫차: 05:00
+막차: 22:15
+배차간격: 45분
+
+노선번호: 80
+종류: 일반버스
+기점: 금정공영차고지
+종점: 부산진시장
+첫차: 04:50
+막차: 22:00
+배차간격: 7분
 
 ```
 
 ### 버스노선 정류장 리스트 가져오기
+
+> **Info**  
+> 이 작업은 실행 시간이 오래 걸릴 수 있습니다.
+
+```csharp
+string busID = "5200051000";
+
+BusRouteResponseData busRoute = await bis.GetBusRoute(busID);
+
+foreach(BusRouteNode item in busRoute)
+{
+	StringBuilder sb = new StringBuilder();
+	sb.Append($"{item.Order}. {item.BusStopName}");
+	if(item.CarPlate != null)
+	{
+		sb.Append('[');
+	    if(item?.IsLowPlateBus) sb.Append("저상 ");
+		sb.Append("{item.CarPlate}]");
+	}
+	if(item.IsReturningPoint) sb.Append("(종점)")
+	
+	Console.WriteLine(sb);
+}
+
+
+```
+실행 결과:
+```
+1. 금정공영차고지[70자5473]
+2. 부산종합터미널.노포역
+3. 노포삼거리
+4. 범어사입구
+......
+65. 우암뉴서울아파트
+66. 우암자유아파트[70자5446](종점)
+67. 동천초등학교[저상 70자5427]
+68. 남광시장
+......
+126. 범어사입구
+127. 노포삼거리
+128. 부산종합터미널.노포역
+129. 금정공영차고지[저상 70자5474]
+
+```
+
+### 특정 정류장 전체 버스 운행정보 가져오기
 ```csharp
 
+
 ```
-출력 결과:
+실행 결과:
 ```
 ```
 
-### 특정 정류장 버스 운행정보 가져오기
+### 특정 정류장의 특정 버스 운행정보 가져오기
 ```csharp
 
-```
-출력 결과:
-```
-```
 
-
+```
+실행 결과:
+```
+```
 
 ## 라이센스
 **BusanBimsLib**는 [GNU LGPL 2.1 라이센스](https://www.olis.or.kr/license/Detailselect.do?lId=1005)에 따라 자유롭게 이용, 복제, 수정, 재배포가 가능합니다.
