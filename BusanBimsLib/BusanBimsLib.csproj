@@ -37,7 +37,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="C:\Users\shcho\OneDrive\Workspace\$library\BusanBimsLib\BusanBimsLib\.editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
