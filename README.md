@@ -2,7 +2,7 @@
   부산광역시 버스정보시스템 .NET용 라이브러리 
   
 > **Note**  
-> We are currently unavailable providing any information about this project as Englishc due to technical reason. 
+> We are currently unavailable providing any information about this project as English or other languages due to technical reason. 
 
 ## 개요
 **BusanBimsLib**는 [부산광역시 버스정보시스템 API](https://www.data.go.kr/data/15092750/openapi.do)를 .NET에서 편리하게 쓸 수 있는 Wrapper 라이브러리입니다.
