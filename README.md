@@ -118,10 +118,11 @@ Console.WriteLine($"페이지 {busStopList.Page} / {busStopList.TotalPages}");
 ### 버스노선 검색하기
 > **Note**  
 > 마을버스 검색시 각 구/군의 **공식 행정구역명 전체**를 사용하여야 합니다. 약칭을 사용하거나 행정구역 단위를 생략하는 경우 검색되지 않습니다.  
-> 예: 금정3 -> **금정구3**, 기장8 -> **기장군8**, 진구6-1 -> **부산진구6-1**
+> 예: 금정3 &rarr; **금정구3**, 기장8 &rarr; **기장군8**, 진구6-1 &rarr; **부산진구6-1**
 
 ```csharp
 ...
+// 노선번호에 해당 키워드가 포함된 전체 버스노선 데이터를 가져옵니다.
 string kwd = "80";
 
 BusInfoResponseData busInfo = await bis.GetBusInfo("80");
@@ -212,6 +213,10 @@ foreach(BusRouteNode item in busRoute)
 ```
 
 ### 특정 정류장 버스 도착정보 가져오기
+> **Warning**  
+> `busStopID` 파라메터에 **실제 버스정류장 이름**(`BusStopName`, 예: `"서면역.롯데호텔백화점"`)을 전달하면 작동하지 않습니다. 
+> 해당 파라메터에는 반드시 [버스노선 검색하기](#버스노선-검색하기) 에서 가져온 `BusStopID`(예: `"164630302"`)를 사용하여야 합니다.
+
 ```csharp
 ...
 string busStopID = "174130201";
@@ -255,10 +260,7 @@ foreach(BusServiceInfo item in busServiceInfo)
 
 ```
 
-
 ## 라이센스
 **BusanBimsLib**는 [GNU LGPL 2.1 라이센스](https://www.olis.or.kr/license/Detailselect.do?lId=1005)에 따라 자유롭게 이용, 복제, 수정, 재배포가 가능합니다.
 수정 후 재배포하는 경우 소스코드 제공 요청에 반드시 응하여야 하며, 동일한 라이선스를 적용하여 배포하여야 합니다.
 원작자는 본 라이브러리 및 소스코드를 사용함으로써 발생하는 일체의 문제에 대하여 책임지지 않습니다.
-
-## 기여
