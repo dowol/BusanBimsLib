@@ -36,7 +36,7 @@ https://nuget.org/packages/BusanBimsLib
 > API 클라이언트 인스턴스(`BusanBimsClient`)를 생성할 때, [공공데이터포털](https://data.go.kr/)에서 발급받은 인증키 중 **Decoding** 인증키를 사용하여야 합니다.  
 > (Encoding 인증키를 사용할 경우 인증키를 제대로 인식하지 못할 수도 있습니다.)  
 > 
-> ![AccessKey Guidelines](accesskey-guide.png)  
+> ![AccessKey Guidelines](accesskey-guide.png?raw=true)  
 > **파란색 강조 표시된 부분을 사용**
 
 * C# (>= 9.0 &amp; Top-level statement 사용 시)
